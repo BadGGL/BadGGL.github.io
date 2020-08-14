@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>lshell编程中空格使用方法</title>
+      <link href="/2020/03/09/shell-bian-cheng-zhong-kong-ge-shi-yong-fang-fa/"/>
+      <url>/2020/03/09/shell-bian-cheng-zhong-kong-ge-shi-yong-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ensp-ensp-ensp-ensp-最近开始学linux，结束到了shell编程，shell中到底该不该留空格弄得心烦意乱，写一篇博文记录一下shell中空格的使用方法。"><a href="#ensp-ensp-ensp-ensp-最近开始学linux，结束到了shell编程，shell中到底该不该留空格弄得心烦意乱，写一篇博文记录一下shell中空格的使用方法。" class="headerlink" title="&ensp;&ensp;&ensp;&ensp; 最近开始学linux，结束到了shell编程，shell中到底该不该留空格弄得心烦意乱，写一篇博文记录一下shell中空格的使用方法。"></a><strong>&ensp;&ensp;&ensp;&ensp; 最近开始学linux，结束到了shell编程，shell中到底该不该留空格弄得心烦意乱，写一篇博文记录一下shell中空格的使用方法。</strong></h2><hr><h4 id="1-定义变量时-号的两边不可以留空格"><a href="#1-定义变量时-号的两边不可以留空格" class="headerlink" title="1.定义变量时, =号的两边不可以留空格."></a>1.定义变量时, =号的两边不可以留空格.</h4><p>eg:<br>gender=femal————right<br>gender =femal———–wrong<br>gender= femal———–wrong<br><br></p><a id="more"></a><h4 id="2-条件测试语句-符号的两边都要留空格"><a href="#2-条件测试语句-符号的两边都要留空格" class="headerlink" title="2.条件测试语句 [ 符号的两边都要留空格."></a>2.条件测试语句 [ 符号的两边都要留空格.</h4><p>eg:<br>if [ $gender = femal ]; then——-right.<br>echo “you are femal”;<br>fi</p><p>if[ $gender…———————–wrong<br>if [$gender…———————-wrong.<br><br></p><h4 id="3-条件测试的内容-如果是字符串比较的话-比较符号两边要留空格"><a href="#3-条件测试的内容-如果是字符串比较的话-比较符号两边要留空格" class="headerlink" title="3.条件测试的内容,如果是字符串比较的话, 比较符号两边要留空格!"></a>3.条件测试的内容,如果是字符串比较的话, 比较符号两边要留空格!</h4><p>eg:<br>if [ $gender = femal ]; then——-right.<br>if [ $gender= femal ]; then——–wrong.<br>if [ $gender=femal ]; then———wrong.<br><br></p><h4 id="4-如果if-和-then写在同一行-那么-注意-then的前面要跟上-号-如果-then-换行写-那么也没问题"><a href="#4-如果if-和-then写在同一行-那么-注意-then的前面要跟上-号-如果-then-换行写-那么也没问题" class="headerlink" title="4.如果if 和 then写在同一行, 那么,注意, then的前面要跟上 ; 号.如果 then 换行写, 那么也没问题."></a>4.如果if 和 then写在同一行, 那么,注意, then的前面要跟上 ; 号.如果 then 换行写, 那么也没问题.</h4><p>eg:<br>if [ $gender = femal ]; then——-right.<br>if [ $gender = femal ]<br>then——————————-right.<br>if [ $gender = femal ] then——-wrong. then前面少了 ; 号.<br>提示出错信息:<br>syntax error near unexpected token then<br>同理,还有很多出错信息 比如<br>syntax error near unexpected token fi 等都是这样引起的.<br><br></p><h4 id="5-if-后面一定要跟上-then-同理"><a href="#5-if-后面一定要跟上-then-同理" class="headerlink" title="5.if 后面一定要跟上 then. 同理"></a>5.if 后面一定要跟上 then. 同理</h4><p>elif 后面一定要跟上 then.<br>不然提示出错信息:<br>syntax error near unexpected token else</p><p><strong>1</strong> if 语句后面需要跟着then，同时前面要有分号；<br><strong>2</strong> 空格非常重要，shell 会认为空格前的为一个命令，如果a=3 认为是赋值操作，如果写成a=3，那么就会认为a为一个命令 this=<code>ls -l |grep ‘^-&#39; | wc -l </code><br><strong>3</strong> 操作符之间要用空格分开 ，如 test ! -d $1，其中的！和-d就要用空格分开<br>空格是命令解析中的重要分隔符<br><br></p><h4 id="6-命令和其后的参数或对象之间一定要有空格"><a href="#6-命令和其后的参数或对象之间一定要有空格" class="headerlink" title="6. 命令和其后的参数或对象之间一定要有空格"></a>6. 命令和其后的参数或对象之间一定要有空格</h4><p>if [ -x”~/Workspace/shell/a.sh” ];then</p><p>只有 -x 后有空格才表示紧跟其后的字符串是否指向一个可执行的文件名，否则就成了测试 -x”~/Workspace/shell/a.sh” 这个字符串是不是空。<br><br></p><h4 id="7-取变量值的符号’-’和后边的变量或括号不能有空格"><a href="#7-取变量值的符号’-’和后边的变量或括号不能有空格" class="headerlink" title="7.取变量值的符号’$’和后边的变量或括号不能有空格"></a>7.取变量值的符号’$’和后边的变量或括号不能有空格</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>idea javaweb项目 out.print 红线报错</title>
+      <link href="/2019/11/24/idea-print-bao-cuo/"/>
+      <url>/2019/11/24/idea-print-bao-cuo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="近期学校开了Java-Web的课程在使用过程中遇到的小问题"><a href="#近期学校开了Java-Web的课程在使用过程中遇到的小问题" class="headerlink" title="近期学校开了Java Web的课程在使用过程中遇到的小问题"></a><strong>近期学校开了Java Web的课程在使用过程中遇到的小问题</strong></h2><hr><p>&ensp;&ensp;&ensp;&ensp;一开始我用eclipes写代码的时候很顺利，没有遇到什么问题。但是今天把软件换成了<strong>idea</strong>却在一开始就出现了各种问题。<br>&ensp;&ensp;&ensp;&ensp;我遇到的问题如下图所示,就是在out.print中会报红色错误，但是并不影响正常运行，只是这样显示而已，但是看起来就很难受。<br><img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E9%97%AE%E9%A2%981.JPG"></p><a id="more"></a><h2 id="解决方法一："><a href="#解决方法一：" class="headerlink" title="解决方法一："></a>解决方法一：</h2><p>点击左上角 File-&gt;Invalidate Caches/Restart<br>在弹出对话框中选择Juse Restart来进行缓存清理<br>有些同学这样就能够解决上面的额问题了，如果没有解决，就用方法二。</p><hr><h2 id="解决方法二："><a href="#解决方法二：" class="headerlink" title="解决方法二："></a>解决方法二：</h2><p>在主界面按ctrl+alt+shift+s来打开项目结构，如下图:<br>按照红色点头从左到右依次点击，然后把自己安装的tomcat添加进来关联即可<br><img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%982.jpg"><br><img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%983.jpg"></p><hr><h2 id="解决方法三："><a href="#解决方法三：" class="headerlink" title="解决方法三："></a>解决方法三：</h2><p>&ensp;&ensp;&ensp;&ensp;以上两种方法都是从网上搜索得来的解决方法，但是这两种方法都没有解决我的问题，然后我只能继续尝试，接着找到了第三种方法。</p><p><strong>1.</strong> 找到你的tomcat的安装目录，找到其中的lib文件夹，并找到其中的两个文件<br><strong>jsp-api.jar和servlet-api.jar</strong>如下图: <img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%983.png"></p><p><strong>2.</strong> 把这两个文件放到你新建的项目中的lib文件夹下，如图：<img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%984.png"></p><p><strong>3.</strong> 然后重新启动idea，打开项目就可以看到问题已经解决了！<br><img src="https://codeggl.obs.cn-north-4.myhuaweicloud.com/idea%20javaweb%E9%A1%B9%E7%9B%AE%20out.print%20%E7%BA%A2%E7%BA%BF%E6%8A%A5%E9%94%99/idea%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%985.jpg"></p><hr><p>经过一番折腾，我最终是通过第三种方法解决了这个问题。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> idea问题解决 </tag>
+            
+            <tag> JavaWeb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
